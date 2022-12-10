@@ -12,8 +12,8 @@ public class SwaggerConfig {
     @Bean
     public OpenAPI customOpenAPI() {
         Contact contact = new Contact()
-                .name("Aleksey Zhdanov")
-                .email("aleksey.zhd@gmail.com")
+                .name("Aleksey Vld")
+                .email("aleksey@test.mail")
                 .url("https://github.com/aleksey-nsk");
 
         Info info = new Info()

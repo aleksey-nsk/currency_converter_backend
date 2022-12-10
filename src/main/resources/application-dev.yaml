@@ -7,14 +7,14 @@ logging:
     level:
         com.example.demo: debug
     file:
-        name: logs/dev.log
+        name: logs/app.log
 
 # Настройки БД
 spring:
     datasource:
         driver-class-name: org.postgresql.Driver
-        url: jdbc:postgresql://${DATASOURCE_HOST:localhost}:15432/converter_dev
-        username: admin_dev
+        url: jdbc:postgresql://${DATASOURCE_HOST:localhost}:15432/converter
+        username: admin
         password: 123
     jpa:
         show-sql: false
