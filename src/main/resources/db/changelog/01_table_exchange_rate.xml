@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+
+    <changeSet id="Create table exchange_rate" author="Aleksey Zhdanov">
+        <createTable tableName="exchange_rate">
+            <column name="id" type="integer" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="exchange_rate_pk"/>
+            </column>
+            <column name="date" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id_cb" type="varchar(40)"/>
+            <column name="num_code" type="varchar(40)"/>
+            <column name="char_code" type="varchar(40)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="nominal" type="integer">
+                <constraints nullable="false"/>
+            </column>
+            <column name="name" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="value" type="numeric">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>

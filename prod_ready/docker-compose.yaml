@@ -1,0 +1,40 @@
+version: '3.0'
+
+services:
+
+    # База данных PostgreSQL
+    database:
+        image: postgres:13
+        container_name: 'converter_prod_db'
+        ports:
+            - 15433:5432 # для доступа с хост-машины
+        environment:
+            - 'POSTGRES_DB=converter_prod'
+            - 'POSTGRES_USER=admin_prod'
+            - 'POSTGRES_PASSWORD=456'
+        volumes:
+            - db-data:/var/lib/postgresql/data
+
+    # Бэкенд (Spring Boot REST API на встроенном Tomcat-сервере)
+    backend:
+        image: alexz2/converter_back:1.0.0
+        container_name: 'converter_prod_back'
+        ports:
+            - 8083:8083 # на указанном порту будет запущен http-сервер
+        environment:
+            - 'PORT=8083'
+            - 'SPRING_DATASOURCE_URL=jdbc:postgresql://database:5432/converter_prod'
+            - 'JS_URL=http://localhost:8080'
+        depends_on:
+            - database # т.е. данный сервис backend зависит от сервиса database
+
+    # Фронтенд на JavaScript на Nginx-сервере
+    frontend:
+        image: alexz2/converter_front:1.0.0
+        container_name: 'converter_prod_front'
+        ports:
+            - 8080:80
+
+# Создать volume с именем db-data
+volumes:
+    db-data:

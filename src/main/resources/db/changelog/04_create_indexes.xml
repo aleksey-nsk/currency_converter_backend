@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+
+    <changeSet id="Create indexes" author="Aleksey Zhdanov">
+        <createIndex tableName="exchange_rate" indexName="index_date">
+            <column name="date"/>
+        </createIndex>
+
+        <createIndex tableName="exchange_rate" indexName="index_name_date">
+            <column name="name"/>
+            <column name="date"/>
+        </createIndex>
+
+        <createIndex tableName="statistics" indexName="index_valutes">
+            <column name="from_valute"/>
+            <column name="to_valute"/>
+        </createIndex>
+    </changeSet>
+
+</databaseChangeLog>

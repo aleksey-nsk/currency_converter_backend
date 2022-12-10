@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+
+    <changeSet id="Create table convert" author="Aleksey Zhdanov">
+        <createTable tableName="convert">
+            <column name="id" type="integer" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="convert_pk"/>
+            </column>
+            <column name="date" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="from_valute" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="amount" type="numeric">
+                <constraints nullable="false"/>
+            </column>
+            <column name="to_valute" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="rate" type="numeric">
+                <constraints nullable="false"/>
+            </column>
+            <column name="result" type="numeric">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>
