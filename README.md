@@ -10,10 +10,10 @@
 
 1. Бэкенд реализован в виде **Spring Boot REST API**.
 
-2. Используется БД **PostgreSQL** в контейнере **Docker**. Настройки контейнера указываем в
+2. Используется БД **PostgreSQL** в контейнере **Docker**. Настройки контейнера указываем в  
    файле docker/**docker-compose.yaml**.
 
-3. Настройки приложения (порт, логирование, подключение к БД) прописываем в
+3. Настройки приложения (порт, логирование, подключение к БД) прописываем в  
    файле src/main/resources/**application-dev.yaml**.
 
 4. Для миграций используем **Liquibase**.
@@ -24,14 +24,15 @@
 
 6. Реализована валидация данных с помощью **spring-boot-starter-validation**.
 
-7. Документацию к API генерируем с помощью **Swagger**. Для этого подключаем зависимости в pom-файле:  
+7. Документацию к API генерируем с помощью **Swagger**. Для этого подключаем зависимости  
+   в pom-файле:  
    ![](https://github.com/aleksey-nsk/currency_converter_backend/blob/master/screenshots/01_1_swagger.png)  
 
    Далее создаём конфигурационный файл  
    src/main/java/com/example/demo/config/**SwaggerConfig.java**:  
    ![](https://github.com/aleksey-nsk/currency_converter_backend/blob/master/screenshots/01_2_config.png)  
 
-   Для документирования используем аннотацию **@Tag** над классами контроллеров, и
+   Для документирования используем аннотацию **@Tag** над классами контроллеров, и  
    аннотацию **@Operation** над методами:  
    ![](https://github.com/aleksey-nsk/currency_converter_backend/blob/master/screenshots/01_3_controller.png)  
 
