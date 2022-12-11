@@ -16,15 +16,21 @@
 3. Настройки приложения (порт, логирование, подключение к БД) прописываем в  
    файле src/main/resources/**application-dev.yaml**.
 
-4. Для миграций используем **Liquibase**.
+4. Для миграций используем **Liquibase**. В том числе добавляем **миграцию** создающую **индексы**.
 
 5. Для тестирования используем **in-memory базу данных H2**. Настройки test-профиля прописываем в
-   файле src/test/resources/**application-test.yaml**. Тесты (**интеграционные** и **unit**) создаём в
-   директории **src/test/java**.
+   файле src/test/resources/**application-test.yaml**. Далее над всеми тестовыми классами пишем
+   аннотацию **@ActiveProfiles("test")** для активации тестового профиля. Тесты (**интеграционные** и **unit**)
+   создаём в директории **src/test/java**.
 
 6. Реализована валидация данных с помощью **spring-boot-starter-validation**.
 
-7. Документацию к API генерируем с помощью **Swagger**. Для этого подключаем зависимости  
+7. Создаём **пользовательские исключения**. Для обработки исключений используем **эдвайсы**. Глобально и
+   централизованно обрабатываем исключения с помощью класса с аннотацией **@ControllerAdvice**. Внутри данного
+   класса создаются методы с аннотацией **@ExceptionHandler**, с помощью которой определяется
+   обрабатываемое исключение (либо список обрабатываемых исключений).
+
+8. Документацию к API генерируем с помощью **Swagger**. Для этого подключаем зависимости  
    в pom-файле:  
    ![](https://github.com/aleksey-nsk/currency_converter_backend/blob/master/screenshots/01_1_swagger.png)  
 
@@ -36,11 +42,11 @@
    аннотацию **@Operation** над методами:  
    ![](https://github.com/aleksey-nsk/currency_converter_backend/blob/master/screenshots/01_3_controller.png)  
 
-   Для просмотра документации открыть адрес: http://localhost:8082/swagger-ui/index.html  
+   Для просмотра **API-документации** открыть адрес: http://localhost:8082/swagger-ui/index.html  
    Выглядит документация так:  
    ![](https://github.com/aleksey-nsk/currency_converter_backend/blob/master/screenshots/01_4_doc.png)  
 
-8. Открыть приложение в браузере (например статистику по конвертациям)  
+9. Открыть приложение в браузере (например статистику по конвертациям)  
    можно по адресу: http://localhost:8082/api/v1/statistics    
    ![](https://github.com/aleksey-nsk/currency_converter_backend/blob/master/screenshots/02_1_browser.png)  
 
