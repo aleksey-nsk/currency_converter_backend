@@ -3,8 +3,8 @@
 Тестовое задание **Конвертер валют**. Подробное условие в файле files/**task.pdf**.  
 Проект состоит из репозиториев:
 - Backend (данный репозиторий)
-- Frontend
-- Deployment
+- [Frontend](https://github.com/aleksey-nsk/currency_converter_frontend)
+- [Deployment](https://github.com/aleksey-nsk/currency_converter_deployment)
 
 # Backend
 
