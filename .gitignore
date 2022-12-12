@@ -42,4 +42,4 @@ build/
 
 # Other
 /.attach_*
-/docker/*.jar
+/docker/build/*.jar
