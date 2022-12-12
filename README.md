@@ -53,6 +53,9 @@
    Остальные точки проверяем с помощью **Postman**:  
    ![](https://github.com/aleksey-nsk/currency_converter_backend/blob/master/screenshots/02_2_postman.png)  
 
+10. Настроим **CORS**:  
+    ![](https://github.com/aleksey-nsk/currency_converter_backend/blob/master/screenshots/03_cors.png)  
+
 # Создать образ
 
 - Команды для создания образа пропишем в файле docker/**Dockerfile**
