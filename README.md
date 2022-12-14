@@ -11,10 +11,12 @@
 1. Бэкенд реализован в виде **Spring Boot REST API**.
 
 2. Используется БД **PostgreSQL** в контейнере **Docker**. Настройки контейнера указываем в  
-   файле docker/**docker-compose.yaml**.
+   файле docker/**docker-compose.yaml**:  
+   ![](https://github.com/aleksey-nsk/currency_converter_backend/blob/master/screenshots/00_1_docker_compose.png)  
 
 3. Настройки приложения (порт, логирование, подключение к БД) прописываем в  
-   файле src/main/resources/**application-dev.yaml**.
+   файле src/main/resources/**application-dev.yaml**:  
+   ![](https://github.com/aleksey-nsk/currency_converter_backend/blob/master/screenshots/00_2_application.png)  
 
 4. Для миграций используем **Liquibase**. В том числе добавляем **миграцию** создающую **индексы**.
    

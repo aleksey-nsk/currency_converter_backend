@@ -13,9 +13,9 @@ logging:
 spring:
     datasource:
         driver-class-name: org.postgresql.Driver
-        url: jdbc:postgresql://${DATASOURCE_HOST:localhost}:15432/converter
-        username: admin
-        password: 123
+        url: ${DATASOURCE_URL:jdbc:postgresql://localhost:15432/converter}
+        username: ${DATASOURCE_USER:admin}
+        password: ${DATASOURCE_PSWD:123}
     jpa:
         show-sql: false
         properties:
