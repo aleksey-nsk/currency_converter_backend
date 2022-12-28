@@ -1,6 +1,6 @@
 # Info
 
-Task **Currency converter**. Detailed task requirements see in the file files/**task.pdf**.  
+Task **Currency converter**. Detailed task requirements see in files/**task.pdf**.  
 Project consists of repositories:  
 - Backend (current repository)
 - [Frontend](https://github.com/aleksey-nsk/currency_converter_frontend)
@@ -11,24 +11,24 @@ Project consists of repositories:
 1. The backend is created as **Spring Boot REST API**.
 
 2. Database **PostgreSQL** is used in **Docker** container. Container settings are specified in  
-   file docker/**docker-compose.yaml**:  
+   the docker/**docker-compose.yaml**:  
    ![](https://github.com/aleksey-nsk/currency_converter_backend/blob/master/screenshots/00_1_docker_compose.png)  
 
 3. Application settings (port, logging, database connection) are written in  
-   file src/main/resources/**application-dev.yaml**:  
+   the src/main/resources/**application-dev.yaml**:  
    ![](https://github.com/aleksey-nsk/currency_converter_backend/blob/master/screenshots/00_2_application.png)  
 
 4. We use **Liquibase** for migrations. Also **migration** for **indexes** is added.
    
 5. We use **in-memory database H2** for testing. Test-profile settings are specified in  
-   file src/test/resources/**application-test.yaml**. Annotation **@ActiveProfiles("test")** is written  
+   the src/test/resources/**application-test.yaml**. Annotation **@ActiveProfiles("test")** is written  
    above all test classes in order to activate test profile.  
    Tests (**integration** and **unit**) are created in the directory **src/test/java**.
    
 6. Data validation is implemented using **spring-boot-starter-validation**.
 
 7. **Custom exceptions** are created. **Advises** are used to handle exceptions. In order to handle exceptions
-   globally and centrally we use class annotated with **@ControllerAdvice**. Within this class we use methods with  
+   globally and centrally we use class annotated with **@ControllerAdvice**. Within this class we use methods with
    annotation **@ExceptionHandler**, which is used to define handled exception (or list of handled exceptions).
    
 8. API documentation is generated using **Swagger**. To do this, add dependencies  
@@ -65,4 +65,4 @@ Project consists of repositories:
 
 - Next, you need to log in to **Docker Hub** using console
 
-- Finally let's run the **build_and_push.sh** file. The backend image will be created, and uploaded to **Docker Hub**
+- Finally run the **build_and_push.sh**. The backend image will be created and uploaded to **Docker Hub**
