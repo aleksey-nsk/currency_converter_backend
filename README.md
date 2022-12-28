@@ -1,69 +1,68 @@
 # Info
 
-Тестовое задание **Конвертер валют**. Подробное условие в файле files/**task.pdf**.  
-Проект состоит из репозиториев:
-- Backend (данный репозиторий)
+Task **Currency converter**. Detailed task requirements see in the file files/**task.pdf**.  
+Project consists of repositories:  
+- Backend (current repository)
 - [Frontend](https://github.com/aleksey-nsk/currency_converter_frontend)
 - [Deployment](https://github.com/aleksey-nsk/currency_converter_deployment)
 
 # Backend
 
-1. Бэкенд реализован в виде **Spring Boot REST API**.
+1. The backend is created as **Spring Boot REST API**.
 
-2. Используется БД **PostgreSQL** в контейнере **Docker**. Настройки контейнера указываем в  
-   файле docker/**docker-compose.yaml**:  
+2. Database **PostgreSQL** is used in **Docker** container. Container settings are specified in  
+   file docker/**docker-compose.yaml**:  
    ![](https://github.com/aleksey-nsk/currency_converter_backend/blob/master/screenshots/00_1_docker_compose.png)  
 
-3. Настройки приложения (порт, логирование, подключение к БД) прописываем в  
-   файле src/main/resources/**application-dev.yaml**:  
+3. Application settings (port, logging, database connection) are written in  
+   file src/main/resources/**application-dev.yaml**:  
    ![](https://github.com/aleksey-nsk/currency_converter_backend/blob/master/screenshots/00_2_application.png)  
 
-4. Для миграций используем **Liquibase**. В том числе добавляем **миграцию** создающую **индексы**.
+4. We use **Liquibase** for migrations. Also **migration** for **indexes** is added.
    
-5. Для тестирования используем **in-memory базу данных H2**. Настройки test-профиля прописываем  
-   в файле src/test/resources/**application-test.yaml**. Далее над всеми тестовыми классами пишем
-   аннотацию **@ActiveProfiles("test")** для активации тестового профиля.  
-   Тесты (**интеграционные** и **unit**) создаём в директории **src/test/java**.
+5. We use **in-memory database H2** for testing. Test-profile settings are specified in  
+   file src/test/resources/**application-test.yaml**. Annotation **@ActiveProfiles("test")** is written  
+   above all test classes in order to activate test profile.  
+   Tests (**integration** and **unit**) are created in the directory **src/test/java**.
+   
+6. Data validation is implemented using **spring-boot-starter-validation**.
 
-6. Реализована валидация данных с помощью **spring-boot-starter-validation**.
-
-7. Создаём **пользовательские исключения**. Для обработки исключений используем **эдвайсы**. Глобально и
-   централизованно обрабатываем исключения с помощью класса с аннотацией **@ControllerAdvice**. Внутри данного
-   класса создаются методы с аннотацией **@ExceptionHandler**, с помощью которой определяется
-   обрабатываемое исключение (либо список обрабатываемых исключений).
-
-8. Документацию к API генерируем с помощью **Swagger**. Для этого подключаем зависимости  
-   в pom-файле:  
+7. **Custom exceptions** are created. **Advises** are used to handle exceptions. In order to handle exceptions
+   globally and centrally we use class annotated with **@ControllerAdvice**. Within this class we use methods with  
+   annotation **@ExceptionHandler**, which is used to define handled exception (or list of handled exceptions).
+   
+8. API documentation is generated using **Swagger**. To do this, add dependencies  
+   in pom-file:  
    ![](https://github.com/aleksey-nsk/currency_converter_backend/blob/master/screenshots/01_1_swagger.png)  
 
-   Далее создаём конфигурационный файл  
+   Next, create a configuration file  
    src/main/java/com/example/demo/config/**SwaggerConfig.java**:  
    ![](https://github.com/aleksey-nsk/currency_converter_backend/blob/master/screenshots/01_2_config.png)  
 
-   Для документирования используем аннотацию **@Tag** над классами контроллеров, и  
-   аннотацию **@Operation** над методами:  
+   For documentation, use the **@Tag** annotation on the controller classes, and  
+   **@Operation** annotation on the methods:  
    ![](https://github.com/aleksey-nsk/currency_converter_backend/blob/master/screenshots/01_3_controller.png)  
 
-   Для просмотра **API-документации** открыть адрес: http://localhost:8082/swagger-ui/index.html  
-   Выглядит документация так:  
+   To view **API documentation** open the address: http://localhost:8082/swagger-ui/index.html  
+   The documentation looks like this:  
    ![](https://github.com/aleksey-nsk/currency_converter_backend/blob/master/screenshots/01_4_doc.png)  
 
-9. Открыть приложение в браузере (например статистику по конвертациям)  
-   можно по адресу: http://localhost:8082/api/v1/statistics    
+9. Open the application in a browser. For example, conversion statistics  
+   available at: http://localhost:8082/api/v1/statistics      
    ![](https://github.com/aleksey-nsk/currency_converter_backend/blob/master/screenshots/02_1_browser.png)  
-
-   Остальные точки проверяем с помощью **Postman**:  
+   
+   The remaining **endpoints** are checked using **Postman**:    
    ![](https://github.com/aleksey-nsk/currency_converter_backend/blob/master/screenshots/02_2_postman.png)  
 
-10. Настроим **CORS**:  
+10. **CORS** is configured:  
     ![](https://github.com/aleksey-nsk/currency_converter_backend/blob/master/screenshots/03_cors.png)  
 
-# Создать образ
+# Create image
 
-- Команды для создания образа пропишем в файле docker/build/**Dockerfile**
+- We will write the commands for image creating in the file docker/build/**Dockerfile**
 
-- Чтобы не билдить каждый раз в консоли руками, создаём в корне скрипт **build_and_push.sh**
+- In order not to build every time in the console manually, we create the script **build_and_push.sh**
 
-- Далее надо через консоль залогиниться на **Docker Hub**
+- Next, you need to log in to **Docker Hub** using console
 
-- Теперь запустим файл **build_and_push.sh**. Будет создан образ для бэкенда и загружен на **Docker Hub**
+- Finally let's run the **build_and_push.sh** file. The backend image will be created, and uploaded to **Docker Hub**
